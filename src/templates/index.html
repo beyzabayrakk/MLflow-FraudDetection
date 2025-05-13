@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fraud Detection Model</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .form-group { margin-bottom: 10px; }
+        label { display: inline-block; width: 100px; }
+        input { padding: 5px; width: 200px; }
+        button { padding: 10px 20px; background-color: #4CAF50; color: white; border: none; cursor: pointer; }
+        button:hover { background-color: #45a049; }
+        .result { margin-top: 20px; font-size: 18px; color: #333; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>Fraud Detection Model</h1>
+    <form method="POST">
+        {% for i in range(29) %}
+        <div class="form-group">
+            <label for="feature_{{ i }}">Feature {{ i }}:</label>
+            <input type="number" step="any" name="feature_{{ i }}" value="{{ [-1.35980713, -0.07278117, 2.53634674, 1.37815522, -0.33832077, 0.46238778, 0.23959855, 0.0986979, 0.36378697, 0.09079417, -0.55159953, -0.61780086, -0.99138985, -0.31116935, 1.46817697, -0.47040053, 0.20797124, 0.02579058, 0.40399296, 0.2514121, -0.01830678, 0.27783758, -0.11047391, 0.06692807, 0.12853936, -0.18911484, 0.13355838, -0.02105305, 0.0][i] }}">
+        </div>
+        {% endfor %}
+        <button type="submit">Predict</button>
+    </form>
+    {% if prediction is not none %}
+    <div class="result {% if prediction is string and 'Error' in prediction %}error{% endif %}">
+        <strong>Prediction:</strong> 
+        {% if prediction is string and 'Error' in prediction %}
+            <span class="error">{{ prediction }}</span>
+        {% else %}
+            {{ prediction }} (0: Not Fraud, 1: Fraud)
+        {% endif %}
+    </div>
+    {% endif %}
+</body>
+</html>

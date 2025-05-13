@@ -1,0 +1,11 @@
+pandas==2.2.3
+numpy==1.26.4
+scikit-learn==1.5.2
+mlflow==2.15.1
+flask==2.2.5
+werkzeug==2.2.3
+requests==2.32.3
+streamlit==1.38.0
+hyperopt==0.2.7
+imbalanced-learn==0.12.4
+setuptools==70.0.0
